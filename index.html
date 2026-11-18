@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comment les supercondensateurs alimentent le Start &amp; Stop des voitures ?</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#5d5d5d;--line:#cfcfcf;--bg:#fff;--soft:#f5f5f5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--fg:#eaeaea;--muted:#aaa;--line:#444;--bg:#151515;--soft:#222}}
+:root[data-theme="dark"]{--fg:#eaeaea;--muted:#aaa;--line:#444;--bg:#151515;--soft:#222}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Open Sans",Arial,sans-serif;font-size:16px;line-height:1.55}
+main{max-width:920px;margin:0 auto;padding:16px 16px 56px}
+.entete{font-family:"Courier New",monospace;font-size:13px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:6px}
+.themes{font-family:"Courier New",monospace;font-weight:bold;font-size:13px;margin-top:8px}
+h1{font-size:22px;text-align:center;text-decoration:underline;margin:20px 0 4px}
+.sous{text-align:center;color:var(--muted);margin:0 0 18px;font-size:14px}
+h2{font-size:17px;border-bottom:2px solid var(--fg);padding-bottom:4px;margin:36px 0 12px}
+.box{border:1px solid var(--line);padding:12px 14px;margin:0 0 14px;background:var(--bg)}
+.box h3{font-size:15px;margin:0 0 6px;text-decoration:underline}
+.box p{margin:6px 0}
+.formule{text-align:center;font-size:17px;margin:8px 0;padding:6px;border:1px dashed var(--line)}
+.grille{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+@media (max-width:700px){.grille{grid-template-columns:1fr}}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.btn{font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);border-radius:4px;cursor:pointer}
+.btn.on{background:var(--fg);color:var(--bg)}
+input[type=range]{width:100%}
+.val{font-family:"Courier New",monospace;font-size:15px}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}
+th,td{border:1px solid var(--line);padding:3px 4px;text-align:center}
+th{background:var(--soft)}
+svg{width:100%;height:auto;display:block;margin:6px 0}
+.q{margin:14px 0 4px}
+.q b{font-weight:700}
+textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:4px;padding:6px;margin-top:4px;background:var(--bg);color:var(--fg)}
+.fld{font:inherit;font-size:15px;border:none;border-bottom:1px solid var(--fg);background:transparent;color:var(--fg);width:200px}
+.mirror{display:none;white-space:pre-wrap;border:1px solid #999;min-height:40px;padding:6px;margin-top:4px;font-size:12pt}
+.btnp{font:inherit;font-size:14px;padding:8px 14px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);border-radius:4px;cursor:pointer;margin-top:24px}
+@media print{.btnp,.btnstextarea{display:none}.mirror{display:block}.q{page-break-inside:avoid}body{font-size:12pt}.box{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+<div class="entete"><span>Physique-Chimie</span><span>Lycée Nadar</span><span>Mr Gheraibia  2026/2027</span></div>
+<div class="themes">Thèmes : Énergies — Chapitres 1 et 2</div>
+<h1>Comment les supercondensateurs alimentent le Start &amp; Stop des voitures ?</h1>
+<p class="sous">Activité expérimentale virtuelle · durée indicative 2 h</p>
+
+<div class="box">
+  <p>Nom : <input id="nom" class="fld" type="text" aria-label="Nom"> &nbsp; Prénom : <input id="prenom" class="fld" type="text" aria-label="Prénom"> &nbsp; Classe : 1STI2D</p>
+  <p class="note">Tes réponses sont enregistrées dans ce navigateur. Pour rendre ton compte rendu, clique sur « Générer le compte rendu (PDF) » en bas de page et dépose le PDF.</p>
+</div>
+
+<h2>Chaîne énergétique</h2>
+<div class="box">
+  <p>Écris la forme d'énergie sur chaque flèche et ce qui réalise chaque conversion (à reporter dans ta copie).</p>
+  <svg viewBox="0 0 700 110" role="img" aria-label="Chaîne énergétique à compléter">
+    <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker></defs>
+    <g font-family="Arial" font-size="13" fill="currentColor" stroke="currentColor" stroke-width="1.2">
+      <rect x="0" y="25" width="150" height="60" fill="none"/><text x="75" y="61" text-anchor="middle">Alimentation 5 V</text>
+      <line x1="154" y1="55" x2="200" y2="55" marker-end="url(#fl)"/>
+      <rect x="204" y="25" width="150" height="60" fill="none"/><text x="279" y="61" text-anchor="middle">Condensateur</text>
+      <line x1="358" y1="55" x2="404" y2="55" marker-end="url(#fl)"/>
+      <rect x="408" y="25" width="130" height="60" fill="none"/><text x="473" y="61" text-anchor="middle">Moteur</text>
+      <line x1="542" y1="55" x2="588" y2="55" marker-end="url(#fl)"/>
+      <rect x="592" y="25" width="108" height="60" fill="none"/><text x="646" y="61" text-anchor="middle">Rotation</text>
+    </g>
+  </svg>
+</div>
+
+<h2>Étape 1 · Montage et énergie stockée</h2>
+<div class="box">
+  <h3>Document 1 · Schéma du branchement</h3>
+  <p>U₀ = 5 V. Le condensateur C = 1 F est branché en parallèle avec l'ensemble moteur M + résistance R = 1 Ω. K1 charge le condensateur, K2 le relie au moteur.</p>
+  <svg viewBox="0 0 420 230" role="img" aria-label="Schéma du montage">
+    <g fill="none" stroke="currentColor" stroke-width="1.5" font-family="Arial" font-size="13" color="currentColor">
+      <!-- branche gauche : générateur U0 -->
+      <line x1="90" y1="40" x2="90" y2="106"/>
+      <line x1="78" y1="106" x2="102" y2="106" stroke-width="2.5"/>
+      <line x1="84" y1="116" x2="96" y2="116" stroke-width="2.5"/>
+      <line x1="90" y1="116" x2="90" y2="200"/>
+      <text x="22" y="122">U₀ = 5 V</text>
+      <!-- haut : K1 puis noeud, K2, noeud droit -->
+      <line x1="90" y1="40" x2="116" y2="40"/>
+      <line id="b1" x1="116" y1="40" x2="142" y2="24"/>
+      <text x="124" y="16" stroke="none" fill="currentColor">K1</text>
+      <line x1="142" y1="40" x2="200" y2="40"/>
+      <line x1="200" y1="40" x2="236" y2="40"/>
+      <line id="b2" x1="236" y1="40" x2="262" y2="24"/>
+      <text x="244" y="16" stroke="none" fill="currentColor">K2</text>
+      <line x1="262" y1="40" x2="330" y2="40"/>
+      <!-- branche centrale : condensateur -->
+      <line x1="200" y1="40" x2="200" y2="100"/>
+      <line x1="184" y1="100" x2="216" y2="100" stroke-width="2.5"/>
+      <line x1="184" y1="110" x2="216" y2="110" stroke-width="2.5"/>
+      <line x1="200" y1="110" x2="200" y2="200"/>
+      <text x="224" y="110" stroke="none" fill="currentColor">C</text>
+      <!-- branche droite : moteur M puis résistance R -->
+      <line x1="330" y1="40" x2="330" y2="66"/>
+      <circle cx="330" cy="80" r="14"/>
+      <text x="330" y="84" text-anchor="middle" stroke="none" fill="currentColor">M</text>
+      <line x1="330" y1="94" x2="330" y2="110"/>
+      <rect x="318" y="110" width="24" height="40"/>
+      <text x="330" y="134" text-anchor="middle" stroke="none" fill="currentColor">R</text>
+      <line x1="330" y1="150" x2="330" y2="200"/>
+      <!-- bas -->
+      <line x1="90" y1="200" x2="330" y2="200"/>
+      <text x="352" y="72" stroke="none" fill="currentColor">i(t)</text>
+      <text x="352" y="134" stroke="none" fill="currentColor">u(t)</text>
+      <rect id="h1" x="108" y="12" width="42" height="36" fill="transparent" style="cursor:pointer"/><rect id="h2" x="228" y="12" width="42" height="36" fill="transparent" style="cursor:pointer"/>
+    </g>
+  </svg>
+  <p class="note">Voies 1 et 2 du système d'acquisition : u(t) aux bornes de M + R, et image du courant i(t).</p>
+</div>
+
+<div class="box">
+  <h3>Document 2 · Énergie stockée dans un condensateur</h3>
+  <div class="formule">E = ½ × C × U²</div>
+  <p>E : énergie en J · C : capacité en F · U : tension en V.</p>
+</div>
+
+<div class="q"><b>Q1.</b> Calcule, à l'aide des documents 1 et 2, l'énergie emmagasinée dans le condensateur lorsque K1 est fermé et K2 ouvert.</div>
+<textarea aria-label="Réponse Q1"></textarea>
+<div class="q"><b>Q2.</b> Indique où placer les voies 1 et 2 du système d'acquisition pour visualiser la tension u(t) aux bornes de l'ensemble moteur + résistance et l'image du courant i(t).</div>
+<textarea aria-label="Réponse Q2"></textarea>
+<div class="q"><b>Q3.</b> Ferme K1 et ouvre K2. Indique quel dipôle du circuit reçoit de l'énergie.</div>
+<textarea aria-label="Réponse Q3"></textarea>
+
+<h2>Étape 2 · Simulation de la décharge (K1 ouvert, K2 fermé)</h2>
+<div class="box">
+  <h3>Simulation de la décharge (K1 ouvert, K2 fermé)</h3>
+  <div class="btns">
+    <button class="btn on" id="go" type="button">Lancer la décharge (10 s)</button>
+    <button class="btn" id="reset" type="button">Réinitialiser</button>
+  </div>
+  <p class="note" id="etat">Clique sur K1 et K2 pour les ouvrir ou les fermer.</p>
+  <p>Temps : <span class="val" id="tv">0,0</span> s</p>
+  <div class="grille">
+    <div>
+      <p>u(t) (V) : <span class="val" id="uv">5,00</span></p>
+      <p>i(t) (A) : <span class="val" id="iv">1,00</span></p>
+      <p>u_R(t) (V) : <span class="val" id="urv">1,00</span></p>
+    </div>
+    <div>
+      <svg viewBox="0 -24 380 242" role="img" aria-label="Courbes u(t) et i(t)">
+        <g id="axes" stroke="currentColor" fill="none" font-family="Arial" font-size="10" color="currentColor"></g>
+        <g id="grid" stroke="#9a9a9a" stroke-width="0.6"></g>
+        <line x1="40" y1="10" x2="40" y2="170" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="40" y1="170" x2="310" y2="170" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="310" y1="10" x2="310" y2="170" stroke="currentColor" stroke-width="1.2"/>
+        <polyline id="cu" stroke="currentColor" stroke-width="2" fill="none" points=""/>
+        <polyline id="ci" stroke="currentColor" stroke-width="2" stroke-dasharray="5 3" fill="none" points=""/>
+        <circle id="dot" cx="40" cy="10" r="4" fill="currentColor"/>
+        <g id="labels" font-family="Arial" font-size="12" fill="currentColor"></g>
+      </svg>
+      <p class="note">Trait plein : u(t), axe de gauche en V. Tirets : i(t), axe de droite en A. Quadrillage : 1 s et 1 V.</p>
+    </div>
+  </div>
+</div>
+
+<div class="q"><b>Q4.</b> Ouvre K1 et ferme K2. Indique le sens du transfert d'énergie entre les éléments du montage, et justifie.</div>
+<textarea aria-label="Réponse Q4"></textarea>
+<div class="q"><b>Q5.</b> Calcule la puissance instantanée p(t) = u(t) × i(t) pour t = 0 s et t = 10 s. Peut-on considérer cette puissance comme constante ? Justifie.</div>
+<textarea aria-label="Réponse Q5"></textarea>
+<div class="q"><b>Q6.</b> Calcule la puissance moyenne P reçue par l'ensemble moteur + résistance pendant 10 s.</div>
+<textarea aria-label="Réponse Q6"></textarea>
+<div class="q"><b>Q7.</b> Déduis de P l'énergie reçue par l'ensemble moteur + résistance pendant 10 s.</div>
+<textarea aria-label="Réponse Q7"></textarea>
+<div class="q"><b>Q8.</b> Calcule la tension u_R aux bornes de la résistance R = 1 Ω à t = 0 s, à partir de i(0). Vérifie avec la loi d'Ohm.</div>
+<textarea aria-label="Réponse Q8"></textarea>
+<div class="q"><b>Q9.</b> Indique la convention (récepteur ou générateur) utilisée pour l'ensemble moteur + résistance. Justifie avec le signe de p(t).</div>
+<textarea aria-label="Réponse Q9"></textarea>
+
+<h2>Conclusion</h2>
+<div class="q"><b>Conclus</b> : quel est l'intérêt des supercondensateurs pour le Start &amp; Stop ?</div>
+<textarea aria-label="Réponse conclusion"></textarea>
+
+<button class="btnp" type="button" id="pdf">Générer le compte rendu (PDF)</button>
+</main>
+<script>
+(function(){
+  var U0=5, Rtot=5, RC=5, T=10;      // R = 1 Ω, moteur 4 Ω, C = 1 F
+  var NS='http://www.w3.org/2000/svg';
+  var X0=40, XS=27, Y0=170, H=160;
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e;}
+  var grid=document.getElementById('grid'), labels=document.getElementById('labels');
+  for(var s=0;s<=10;s++){ el('line',{x1:X0+s*XS,y1:10,x2:X0+s*XS,y2:Y0},grid); }
+  for(var v=0;v<=5;v++){ el('line',{x1:X0,y1:Y0-v*32,x2:X0+10*XS,y2:Y0-v*32},grid); }
+  for(var s=0;s<=10;s++){ el('line',{x1:X0+s*XS,y1:170,x2:X0+s*XS,y2:174,stroke:'currentColor'},labels);
+    el('text',{x:X0+s*XS,y:186,'text-anchor':'middle'},labels).textContent=s; }
+  el('text',{x:X0+10*XS-4,y:206,'font-size':14,'font-weight':'bold'},labels).textContent='t (s)';
+  for(var v=0;v<=5;v++){ el('line',{x1:36,y1:Y0-v*32,x2:40,y2:Y0-v*32,stroke:'currentColor'},labels);
+    el('text',{x:32,y:Y0-v*32+4,'text-anchor':'end'},labels).textContent=v; }
+  el('text',{x:0,y:-6,'font-size':14,'font-weight':'bold'},labels).textContent='u (V)';
+  for(var a=0;a<=5;a++){ var yy=Y0-a*32; el('line',{x1:310,y1:yy,x2:314,y2:yy,stroke:'currentColor'},labels);
+    el('text',{x:318,y:yy+4},labels).textContent=(a/5).toFixed(1).replace('.',','); }
+  el('text',{x:312,y:-6,'font-size':14,'font-weight':'bold'},labels).textContent='i (A)';
+
+  var cu=document.getElementById('cu'), ci=document.getElementById('ci'), dot=document.getElementById('dot');
+  var go=document.getElementById('go'), reset=document.getElementById('reset'), etat=document.getElementById('etat');
+  var b1=document.getElementById('b1'), b2=document.getElementById('b2');
+  var K1closed=false, K2closed=false, mode='repos';   // K1 : charge ; K2 : décharge
+
+  function uAt(t){return U0*Math.exp(-t/RC);}
+  function f(x){return x.toFixed(2).replace('.',',');}
+  function setValues(u,i,t){
+    document.getElementById('tv').textContent=t.toFixed(1).replace('.',',');
+    document.getElementById('uv').textContent=f(u);
+    document.getElementById('iv').textContent=f(i);
+    document.getElementById('urv').textContent=f(i);
+  }
+  function drawSwitches(){
+    // lame fermée = trait horizontal ; ouverte = trait incliné
+    if(K1closed){ b1.setAttribute('x2',142); b1.setAttribute('y2',40); } else { b1.setAttribute('x2',142); b1.setAttribute('y2',24); }
+    if(K2closed){ b2.setAttribute('x2',262); b2.setAttribute('y2',40); } else { b2.setAttribute('x2',262); b2.setAttribute('y2',24); }
+  }
+  function drawTo(t){
+    var pu=[],pi=[];
+    for(var k=0;k<=Math.round(t*20);k++){var tt=k/20, x=X0+tt*XS, u=uAt(tt), i=u/Rtot;
+      pu.push(x.toFixed(1)+','+(Y0-(u/U0)*H).toFixed(1));
+      pi.push(x.toFixed(1)+','+(Y0-i*H).toFixed(1));}
+    cu.setAttribute('points',pu.join(' ')); ci.setAttribute('points',pi.join(' '));
+  }
+  function refreshState(){
+    drawSwitches();
+    if(K1closed && K2closed){ etat.textContent='K1 et K2 fermés : les deux branches sont reliées, ce n\'est pas le montage demandé. Ouvre l\'un des deux.'; go.disabled=true; }
+    else if(K1closed){ etat.textContent='K1 fermé, K2 ouvert : charge du condensateur.'; go.disabled=true; }
+    else if(K2closed){ etat.textContent='K1 ouvert, K2 fermé : décharge possible.'; go.disabled=false; }
+    else { etat.textContent='K1 et K2 ouverts : aucune décharge possible.'; go.disabled=true; }
+    go.textContent='Lancer la décharge (10 s)';
+  }
+  function charged(){
+    // K1 fermé : condensateur à U0, pas de courant
+    drawTo(0); cu.setAttribute('points',''); ci.setAttribute('points','');
+    setValues(U0,0,0); dot.setAttribute('cx',X0); dot.setAttribute('cy',Y0-H);
+  }
+  var raf=null, start=null;
+  function step(ts){
+    if(start===null) start=ts;
+    var t=Math.min((ts-start)/1000,T);
+    drawTo(t); var u=uAt(t); setValues(u,u/Rtot,t);
+    dot.setAttribute('cx',X0+t*XS); dot.setAttribute('cy',Y0-(u/U0)*H);
+    if(t<T){ raf=requestAnimationFrame(step); }
+    else { raf=null; go.disabled=false; go.textContent='Décharge terminée'; }
+  }
+  function reinit(){
+    if(raf) cancelAnimationFrame(raf); raf=null; start=null;
+    refreshState();
+    if(K1closed){ charged(); return; }
+    drawTo(0); var u=uAt(0); setValues(u,u/Rtot,0);
+    dot.setAttribute('cx',X0); dot.setAttribute('cy',Y0-(u/U0)*H);
+  }
+  go.addEventListener('click',function(){
+    if(go.disabled) return;
+    if(raf) cancelAnimationFrame(raf); start=null;
+    go.disabled=true; go.textContent='Décharge en cours…';
+    raf=requestAnimationFrame(step);
+  });
+  reset.addEventListener('click',function(){ K1closed=false; K2closed=false; reinit(); });
+  document.getElementById('h1').addEventListener('click',function(){ K1closed=!K1closed; reinit(); });
+  document.getElementById('h2').addEventListener('click',function(){ K2closed=!K2closed; reinit(); });
+  reinit();
+
+
+  // identité : sauvegarde locale et nom du fichier PDF
+  var nom=document.getElementById('nom'), prenom=document.getElementById('prenom');
+  try{ if(localStorage.getItem('supercond-nom')) nom.value=localStorage.getItem('supercond-nom'); if(localStorage.getItem('supercond-prenom')) prenom.value=localStorage.getItem('supercond-prenom'); }catch(e){}
+  function saveId(){ try{ localStorage.setItem('supercond-nom',nom.value); localStorage.setItem('supercond-prenom',prenom.value);}catch(e){} }
+  nom.addEventListener('input',saveId); prenom.addEventListener('input',saveId);
+  function safe(x){return x.trim().replace(/[^A-Za-zÀ-ÿ0-9]+/g,'_').replace(/^_|_$/g,'');}
+  var baseTitle=document.title;
+  function fileName(){
+    var n=safe(nom.value||'NOM'), p=safe(prenom.value||'Prenom');
+    return n+'_'+p+'_supercondensateurs';
+  }
+  // pour l'impression : chaque zone de réponse devient un texte lisible
+  var areas=Array.prototype.slice.call(document.querySelectorAll('textarea'));
+  areas.forEach(function(ta){
+    var m=document.createElement('div'); m.className='mirror'; ta.parentNode.insertBefore(m,ta.nextSibling); ta._mirror=m;
+  });
+  function syncMirror(){ areas.forEach(function(ta){ ta._mirror.textContent=ta.value || ' '; }); }
+  window.addEventListener('beforeprint',function(){ syncMirror(); document.title=fileName(); });
+  window.addEventListener('afterprint',function(){ document.title=baseTitle; });
+  document.getElementById('pdf').addEventListener('click',function(){ syncMirror(); document.title=fileName(); window.print(); });
+
+  var k='supercond-start-stop-';
+  document.querySelectorAll('textarea').forEach(function(ta,idx){
+    var key=k+idx;
+    try{var v=localStorage.getItem(key); if(v) ta.value=v;}catch(e){}
+    ta.addEventListener('input',function(){try{localStorage.setItem(key,ta.value);}catch(e){}});
+  });
+})();
+</script>
+</body>
+</html>
