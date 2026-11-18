@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Comment les supercondensateurs alimentent le Start &amp; Stop des voitures ?</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#5d5d5d;--line:#cfcfcf;--bg:#fff;--soft:#f5f5f5}
+:root{--fg:#1a1a1a;--muted:#5d5d5d;--line:#cfcfcf;--bg:#fff;--soft:#f5f5f5;
+  --orange:#F29A1F;--purple:#4B3A8C;--pink:#E63C7C;--pinkbg:#FCE8F0;--greenbg:#E6F5EE;--violetbg:#EEE8F6;--bluebg:#E4F3F8;--blue:#1F6FC2}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--fg:#eaeaea;--muted:#aaa;--line:#444;--bg:#151515;--soft:#222}}
 :root[data-theme="dark"]{--fg:#eaeaea;--muted:#aaa;--line:#444;--bg:#151515;--soft:#222}
 *{box-sizing:border-box}
@@ -13,39 +14,66 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:"Open Sans",Arial
 main{max-width:920px;margin:0 auto;padding:16px 16px 56px}
 .entete{font-family:"Courier New",monospace;font-size:13px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:6px}
 .themes{font-family:"Courier New",monospace;font-weight:bold;font-size:13px;margin-top:8px}
-h1{font-size:22px;text-align:center;text-decoration:underline;margin:20px 0 4px}
-.sous{text-align:center;color:var(--muted);margin:0 0 18px;font-size:14px}
-h2{font-size:17px;border-bottom:2px solid var(--fg);padding-bottom:4px;margin:36px 0 12px}
+.bandeau{display:inline-block;background:var(--orange);color:#fff;font-size:22px;font-weight:bold;padding:4px 16px;margin-top:14px}
+.titre{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:10px 0 4px}
+.titre h1{font-size:22px;color:var(--orange);margin:0;flex:1 1 360px}
+.titre img{width:230px;max-width:45%;height:auto}
+.sous{color:var(--muted);margin:0 0 14px;font-size:14px}
+h2{font-size:17px;color:#fff;background:var(--purple);padding:6px 12px;margin:34px 0 12px}
+h2.etape{background:var(--orange)}
 .box{border:1px solid var(--line);padding:12px 14px;margin:0 0 14px;background:var(--bg)}
-.box h3{font-size:15px;margin:0 0 6px;text-decoration:underline}
+.box h3{display:inline-block;font-size:14px;color:#fff;background:var(--pink);padding:2px 10px;margin:0 0 8px}
+.box.doc{background:var(--pinkbg);border:none}
+.box.objectif{background:var(--greenbg);border:none}
+.box.materiel{background:var(--violetbg);border:none}
+.box.aide{background:var(--bluebg);border:none}
+.box.aide h3{background:var(--blue)}
+.box.aide ul{margin:6px 0 0 18px;padding:0}
 .box p{margin:6px 0}
-.formule{text-align:center;font-size:17px;margin:8px 0;padding:6px;border:1px dashed var(--line)}
+.formule{text-align:center;font-size:17px;margin:8px 0;padding:6px;background:#fff}
 .grille{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 @media (max-width:700px){.grille{grid-template-columns:1fr}}
 .btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-.btn{font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);border-radius:4px;cursor:pointer}
-.btn.on{background:var(--fg);color:var(--bg)}
-input[type=range]{width:100%}
+.btn{font:inherit;font-size:14px;padding:8px 12px;border:1px solid var(--pink);background:var(--bg);color:var(--fg);border-radius:4px;cursor:pointer}
+.btn.on{background:var(--pink);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
 .val{font-family:"Courier New",monospace;font-size:15px}
-table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}
-th,td{border:1px solid var(--line);padding:3px 4px;text-align:center}
-th{background:var(--soft)}
 svg{width:100%;height:auto;display:block;margin:6px 0}
 .q{margin:14px 0 4px}
 .q b{font-weight:700}
 textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:4px;padding:6px;margin-top:4px;background:var(--bg);color:var(--fg)}
 .fld{font:inherit;font-size:15px;border:none;border-bottom:1px solid var(--fg);background:transparent;color:var(--fg);width:200px}
 .mirror{display:none;white-space:pre-wrap;border:1px solid #999;min-height:40px;padding:6px;margin-top:4px;font-size:12pt}
-.btnp{font:inherit;font-size:14px;padding:8px 14px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);border-radius:4px;cursor:pointer;margin-top:24px}
-@media print{.btnp,.btnstextarea{display:none}.mirror{display:block}.q{page-break-inside:avoid}body{font-size:12pt}.box{page-break-inside:avoid}}
+.btnp{font:inherit;font-size:14px;padding:8px 14px;border:1px solid var(--pink);background:var(--pink);color:#fff;border-radius:4px;cursor:pointer;margin-top:24px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+@media print{.btnp,.btns,.bandeau{display:none}textarea{display:none}.mirror{display:block}.q{page-break-inside:avoid}body{font-size:12pt}.box{page-break-inside:avoid}}
 </style>
 </head>
 <body>
 <main>
 <div class="entete"><span>Physique-Chimie</span><span>Lycée Nadar</span><span>Mr Gheraibia  2026/2027</span></div>
 <div class="themes">Thèmes : Énergies — Chapitres 1 et 2</div>
-<h1>Comment les supercondensateurs alimentent le Start &amp; Stop des voitures ?</h1>
-<p class="sous">Activité expérimentale virtuelle · durée indicative 2 h</p>
+<div class="bandeau">Activités expérimentales</div>
+<div class="titre">
+  <h1>Comment les supercondensateurs alimentent le Start &amp; Stop des voitures ?</h1>
+  <img src="voiture.png" alt="Voiture équipée du système Start &amp; Stop">
+</div>
+<p class="sous">Durée indicative 2 h · activité expérimentale virtuelle</p>
+
+<div class="box objectif">
+  <h3>Objectif du TP</h3>
+  <p>Mesurer la puissance fournie par un condensateur pour faire tourner un moteur à courant continu. La plupart des voitures actuelles sont équipées du système Start &amp; Stop, qui éteint automatiquement le moteur à l'arrêt et le redémarre au relâchement de la pédale de frein. Ce système peut être alimenté par des supercondensateurs, capables de stocker instantanément une grande quantité d'énergie récupérée lors du freinage.</p>
+</div>
+<div class="box materiel">
+  <h3>Matériel</h3>
+  <ul style="margin:6px 0 0 18px;padding:0">
+    <li>Un système d'acquisition et de traitement (Logger Pro, Regressi…)</li>
+    <li>Une alimentation stabilisée 5 V</li>
+    <li>Un condensateur de 1 F, 5,5 V</li>
+    <li>Une résistance de 1 Ω</li>
+    <li>Un moteur à courant continu</li>
+  </ul>
+</div>
 
 <div class="box">
   <p>Nom : <input id="nom" class="fld" type="text" aria-label="Nom"> &nbsp; Prénom : <input id="prenom" class="fld" type="text" aria-label="Prénom"> &nbsp; Classe : 1STI2D</p>
@@ -69,9 +97,9 @@ textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size
   </svg>
 </div>
 
-<h2>Étape 1 · Montage et énergie stockée</h2>
-<div class="box">
-  <h3>Document 1 · Schéma du branchement</h3>
+<h2 class="etape">Étape 1 · Montage et énergie stockée</h2>
+<div class="box doc">
+  <h3>DOC. 1 · Schéma électrique de branchement du condensateur</h3>
   <p>U₀ = 5 V. Le condensateur C = 1 F est branché en parallèle avec l'ensemble moteur M + résistance R = 1 Ω. K1 charge le condensateur, K2 le relie au moteur.</p>
   <svg viewBox="0 0 420 230" role="img" aria-label="Schéma du montage">
     <g fill="none" stroke="currentColor" stroke-width="1.5" font-family="Arial" font-size="13" color="currentColor">
@@ -114,9 +142,16 @@ textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size
   <p class="note">Voies 1 et 2 du système d'acquisition : u(t) aux bornes de M + R, et image du courant i(t).</p>
 </div>
 
-<div class="box">
-  <h3>Document 2 · Énergie stockée dans un condensateur</h3>
+<div class="box doc">
+  <h3>DOC. 2 · Énergie stockée dans un condensateur</h3>
   <div class="formule">E = ½ × C × U²</div>
+<div class="box aide">
+  <h3>Aide</h3>
+  <ul>
+    <li>p(t) = u(t) × i(t)</li>
+    <li>E = P × Δt (E en J, P en W, Δt en s)</li>
+  </ul>
+</div>
   <p>E : énergie en J · C : capacité en F · U : tension en V.</p>
 </div>
 
@@ -127,9 +162,9 @@ textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size
 <div class="q"><b>Q3.</b> Ferme K1 et ouvre K2. Indique quel dipôle du circuit reçoit de l'énergie.</div>
 <textarea aria-label="Réponse Q3"></textarea>
 
-<h2>Étape 2 · Simulation de la décharge (K1 ouvert, K2 fermé)</h2>
+<h2 class="etape">Étape 2 · Simulation de la décharge</h2>
 <div class="box">
-  <h3>Simulation de la décharge (K1 ouvert, K2 fermé)</h3>
+  <h3>Simulation : décharge (K1 ouvert, K2 fermé)</h3>
   <div class="btns">
     <button class="btn on" id="go" type="button">Lancer la décharge (10 s)</button>
     <button class="btn" id="reset" type="button">Réinitialiser</button>
