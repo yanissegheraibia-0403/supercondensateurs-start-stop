@@ -82,16 +82,23 @@ table{border-collapse:collapse;width:100%;font-size:13px}
 <h2>Chaîne énergétique</h2>
 <div class="box">
   <p>Écris la forme d'énergie sur chaque flèche et ce qui réalise chaque conversion (à reporter dans ta copie).</p>
-  <svg viewBox="0 0 700 110" role="img" aria-label="Chaîne énergétique à compléter">
+  <svg viewBox="0 0 700 170" role="img" aria-label="Chaîne énergétique à compléter, avec les pertes">
     <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker></defs>
     <g font-family="Arial" font-size="13" fill="currentColor" stroke="currentColor" stroke-width="1.2">
-      <rect x="0" y="25" width="150" height="60" fill="none"/><text x="75" y="61" text-anchor="middle">Alimentation 5 V</text>
+      <rect x="0" y="25" width="150" height="60" fill="none"/><text x="75" y="61" text-anchor="middle" stroke="none">Alimentation 5 V</text>
       <line x1="154" y1="55" x2="200" y2="55" marker-end="url(#fl)"/>
-      <rect x="204" y="25" width="150" height="60" fill="none"/><text x="279" y="61" text-anchor="middle">Condensateur</text>
+      <rect x="204" y="25" width="150" height="60" fill="none"/><text x="279" y="61" text-anchor="middle" stroke="none">Condensateur</text>
       <line x1="358" y1="55" x2="404" y2="55" marker-end="url(#fl)"/>
-      <rect x="408" y="25" width="130" height="60" fill="none"/><text x="473" y="61" text-anchor="middle">Moteur</text>
+      <rect x="408" y="25" width="130" height="60" fill="none"/><text x="473" y="61" text-anchor="middle" stroke="none">Moteur</text>
       <line x1="542" y1="55" x2="588" y2="55" marker-end="url(#fl)"/>
-      <rect x="592" y="25" width="108" height="60" fill="none"/><text x="646" y="61" text-anchor="middle">Rotation</text>
+      <rect x="592" y="25" width="108" height="60" fill="none"/><text x="646" y="61" text-anchor="middle" stroke="none">Rotation</text>
+      <!-- pertes : flèches vers le bas, en pointillés -->
+      <line x1="279" y1="85" x2="279" y2="130" stroke-dasharray="5 4" marker-end="url(#fl)"/>
+      <text x="287" y="118" stroke="none" font-size="12">pertes</text>
+      <line x1="473" y1="85" x2="473" y2="130" stroke-dasharray="5 4" marker-end="url(#fl)"/>
+      <text x="481" y="118" stroke="none" font-size="12">pertes</text>
+      <text x="279" y="148" text-anchor="middle" stroke="none" font-size="12">énergie thermique (effet Joule, frottements)</text>
+      <text x="473" y="164" text-anchor="middle" stroke="none" font-size="12">énergie thermique (frottements, chauffage)</text>
     </g>
   </svg>
 </div>
