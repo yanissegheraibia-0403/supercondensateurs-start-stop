@@ -37,6 +37,7 @@ h2.etape{background:var(--orange)}
 .btn:disabled{opacity:.5;cursor:default}
 .val{font-family:"Courier New",monospace;font-size:15px}
 svg{width:100%;height:auto;display:block;margin:6px 0}
+svg rect:focus,svg line:focus{outline:none}
 .q{margin:14px 0 4px}
 .q b{font-weight:700}
 textarea{width:100%;box-sizing:border-box;min-height:60px;font:inherit;font-size:15px;border:1px solid var(--line);border-radius:4px;padding:6px;margin-top:4px;background:var(--bg);color:var(--fg)}
@@ -134,7 +135,7 @@ table{border-collapse:collapse;width:100%;font-size:13px}
       <line x1="90" y1="200" x2="330" y2="200"/>
       <text x="352" y="72" stroke="none" fill="currentColor">i(t)</text>
       <text x="352" y="134" stroke="none" fill="currentColor">u(t)</text>
-      <rect id="h1" x="108" y="12" width="42" height="36" fill="transparent" style="cursor:pointer"/><rect id="h2" x="228" y="12" width="42" height="36" fill="transparent" style="cursor:pointer"/>
+      <line id="h1" x1="116" y1="40" x2="142" y2="24" stroke="transparent" stroke-width="26" stroke-linecap="round" style="cursor:pointer"/><line id="h2" x1="236" y1="40" x2="262" y2="24" stroke="transparent" stroke-width="26" stroke-linecap="round" style="cursor:pointer"/>
     </g>
   </svg>
   <p class="note">Voies 1 et 2 du système d'acquisition : u(t) aux bornes de M + R, et image du courant i(t).</p>
